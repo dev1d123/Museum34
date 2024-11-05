@@ -343,10 +343,22 @@
     </a-scene>
 
     <div id="bottom-menu">
-      <button onclick="visorMode()">Modo visor</button>
+      <button id="visor-button">Modo visor</button>
       <button onclick="showInfo()">Mas información</button>
       <button onclick="settings()">Ajustes</button>
     </div>
+    
+    <div id="camPos">
+      <div class="containerCam">    
+          <video id="video" autoplay playsinline></video>
+          <canvas id="canvas"></canvas>
+          <button id="toggleButton">Activar Cámara</button> 
+          <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+          <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"></script>
+          <script src="script.js"></script>
+      </div>
+    </div>
+
 
     <div id="main-menu">
       <h1>Bienvenido al Museo de Arequipa</h1>

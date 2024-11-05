@@ -1,24 +1,41 @@
 var startExperienteBtn = document.getElementById('start_experience');
 var bottomNav = document.getElementById('bottom-menu');
-
+var camContainer = document.getElementById('camPos');
 var exitBtn = document.getElementById('exit');
+var isCamVisible = false;
+var visorButtom = document.getElementById('visor-button');
 
-
-startExperienteBtn.onclick = function(){
+startExperienteBtn.onclick = function() {
     document.getElementById('main-menu').style.display = 'none';
-        // Muestra el menú inferior con una animación
-    bottomNav.style.display = 'flex'; // Cambia el display para que sea visible
+    bottomNav.style.display = 'flex'; 
     setTimeout(function() {
-        bottomNav.classList.add('show'); // Activa la animación de aparición
-    }, 10); // Espera breve para asegurar que la transición ocurra
-        
+        bottomNav.classList.add('show');
+    }, 10);
+    
     document.getElementsByTagName('a-scene')[0].style.zIndex = 'auto';
 }
 
 exitBtn.onclick = function() {
-    window.close(); // Cierra la ventana (en la mayoría de los navegadores)
+    window.close(); 
 }
 
+visorButtom.onclick = function(){
+    if(isCamVisible){
+        camContainer.style.display = 'none'; 
+
+    }else{
+        console.log("activing");
+        camContainer.style.display = 'flex'; 
+    
+        setTimeout(function() {
+            camContainer.classList.add('show'); 
+        }, 10);
+        
+        document.getElementsByTagName('a-scene')[0].style.zIndex = 'auto';
+    }
+    isCamVisible = !isCamVisible;
+
+}
 
 //funcion para que el personaje corra con la tecla shift
 AFRAME.registerComponent('run-controls', {
@@ -71,7 +88,7 @@ AFRAME.registerComponent('jump-controls', {
     //funcion tick (ejecutar a cada frame)
     tick: function(time, timeDelta){
         var position = this.el.object3D.position;
-        console.log(position);
+        //console.log(position);
         //si esta en el aire
         if(this.isJumping){
             position.y += this.velocityY * (timeDelta/1000); //bajar al jugador 

@@ -1,3 +1,4 @@
+console.log("script.js cargado");
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
 const toggleButton = document.getElementById("toggleButton");
@@ -23,6 +24,7 @@ async function setupCamera() {
 async function loadHandposeModel() {
     //uso de api de tensorflow
     handposeModel = await handpose.load();
+    video.style.display="none";
     console.log("Modelo de HandPose cargado");
 }
 
